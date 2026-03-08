@@ -1,85 +1,9 @@
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/memejames/elerium-v2-ui-library/main/Library"))()
 
-local window = library:AddWindow("F + P afse farming", {
+local window = library:AddWindow("F + P ♥️|| AFSE farming", {
     main_color = Color3.fromRGB(0, 0, 255),
     min_size = Vector2.new(470, 660),
     can_resize = false,
 })
 
 local teleportTab = window:AddTab("Teleport")
-
--- Extended Teleport Locations
-local TeleportLocations = {
-    ["Spawn"] = Vector3.new(0, 10, 0),
-    ["TrainingArea"] = Vector3.new(100, 10, 0),
-    ["BattleArena"] = Vector3.new(200, 10, 0),
-    ["SecretLair"] = Vector3.new(300, 10, 0),
-    ["Marketplace"] = Vector3.new(400, 10, 0),
-    ["Dungeon"] = Vector3.new(500, 10, 0),
-    ["SkyCastle"] = Vector3.new(600, 50, 0),
-    ["UndergroundBase"] = Vector3.new(700, -10, 0),
-}
-
-local function teleportTo(locationName)
-    local player = game.Players.LocalPlayer
-    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-        local hrp = player.Character.HumanoidRootPart
-        local targetPosition = TeleportLocations[locationName]
-        if targetPosition then
-            hrp.CFrame = CFrame.new(targetPosition + Vector3.new(0, 2, 0))
-        else
-            warn("Location not found: " .. locationName)
-        end
-    end
-end
-
--- Create a ScreenGui once
-local Player = game.Players.LocalPlayer
-local PlayerGui = Player:WaitForChild("PlayerGui")
-local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "TeleportGUI"
-ScreenGui.Parent = PlayerGui
-
--- Define button positions for neat layout
-local buttonPositions = {
-    UDim2.new(0, 10, 0, 10),
-    UDim2.new(0, 170, 0, 10),
-    UDim2.new(0, 330, 0, 10),
-    UDim2.new(0, 10, 0, 70),
-    UDim2.new(0, 170, 0, 70),
-    UDim2.new(0, 330, 0, 70),
-    UDim2.new(0, 10, 0, 130),
-    UDim2.new(0, 170, 0, 130),
-}
-
-local locations = {
-    {"Spawn", "Spawn"},
-    {"Training", "TrainingArea"},
-    {"Battle Arena", "BattleArena"},
-    {"Secret Lair", "SecretLair"},
-    {"Marketplace", "Marketplace"},
-    {"Dungeon", "Dungeon"},
-    {"Sky Castle", "SkyCastle"},
-    {"Underground Base", "UndergroundBase"},
-}
-
--- Define the createButton function BEFORE using it
-local function createButton(name, position, location)
-    local button = Instance.new("TextButton")
-    button.Size = UDim2.new(0, 150, 0, 50)
-    button.Position = position
-    button.Text = name
-    button.Parent = ScreenGui
-
-    button.MouseButton1Click:Connect(function()
-        teleportTo(location)
-    end)
-end
-
--- Create buttons dynamically
-for i, loc in ipairs(locations) do
-    local row = math.floor((i - 1) / 3) -- change number of columns here if needed
-    local col = (i - 1) % 3
-    local position = buttonPositions[col + 1] + Vector2.new(0, row * 60)
-    createButton(loc[1], position, loc[2])
-end
