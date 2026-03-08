@@ -6,7 +6,7 @@ local window = library:AddWindow("F + P afse farming", {
     can_resize = false,
 })
 
--- Helper function to get player's HRP safely
+-- Helper to get player's HRP safely
 local function getHRP()
     local char = game.Players.LocalPlayer.Character
     if char then
@@ -15,7 +15,7 @@ local function getHRP()
     return nil
 end
 
--- Function to display notifications
+-- Notification function
 local function notify(title, text, duration)
     game.StarterGui:SetCore("SendNotification", {
         Title = title,
@@ -24,7 +24,7 @@ local function notify(title, text, duration)
     })
 end
 
--- Improved teleport function
+-- Teleport function by path string
 local function teleportToPath(pathStr)
     local hrp = getHRP()
     if not hrp then
@@ -62,6 +62,7 @@ local function teleportToPath(pathStr)
     notify("Teleported", "Successfully teleported to: " .. pathStr, 2)
 end
 
+-- Teleport function by object name
 local function teleportToName(name)
     local hrp = getHRP()
     if not hrp then 
@@ -89,7 +90,7 @@ local function teleportToName(name)
     notify("Teleport Failed", "Object not found: " .. name, 3)
 end
 
--- Helper to add buttons with debugging
+-- Helper to create buttons with debug info
 local function createButton(section, label, path, fallbackName)
     print("Creating button: " .. label)
     section:AddButton(label, function()
@@ -103,10 +104,11 @@ local function createButton(section, label, path, fallbackName)
     end)
 end
 
--- Teleports Tab
+-- Main Teleports tab
 local teleportTab = window:AddTab("Teleports")
+print("Created Teleports tab:", teleportTab)
 
--- Strength
+-- Strength Training
 local strengthSec = teleportTab:AddSection("Strength Training")
 createButton(strengthSec, "Dummy (100 Strength)", "TrainingAreas.Dummy")
 createButton(strengthSec, "Fridge / Refrigerator (100K Strength)", "TrainingAreas.Fridge", "Fridge")
@@ -115,13 +117,13 @@ createButton(strengthSec, "Arena (100M Strength)", "TrainingAreas.Arena")
 createButton(strengthSec, "Excalibur (1B Strength)", "TrainingAreas.Excalibur")
 createButton(strengthSec, "Floating Island (50T+ Strength)", "TrainingAreas.FloatingIsland")
 
--- Durability
+-- Durability Training
 local durSec = teleportTab:AddSection("Durability Training")
 createButton(durSec, "Pirate Ship (100 Dur)", "TrainingAreas.PirateShip", "PirateShip")
 createButton(durSec, "Paw (1M Dur)", "TrainingAreas.Paw")
 createButton(durSec, "Black Flames (100M Dur)", "TrainingAreas.BlackFire", "BlackFire")
 
--- Chakra
+-- Chakra Training
 local chakraSec = teleportTab:AddSection("Chakra Training")
 createButton(chakraSec, "Chakra Tree (100 Chak)", "TrainingAreas.ChakraTree", "Tree")
 createButton(chakraSec, "Waterfall (100K Chak)", "TrainingAreas.Waterfall")
@@ -130,14 +132,15 @@ createButton(chakraSec, "Sakura Tree (100M Chak)", "TrainingAreas.Sakura")
 createButton(chakraSec, "Ramen Shop (50T Chak)", "TrainingAreas.RamenShop")
 createButton(chakraSec, "Ultimate Dragon (25QD Chak)", "TrainingAreas.Dragon", "UltimateDragon")
 
--- Other
+-- Misc / Speed
 local otherSec = teleportTab:AddSection("Misc / Speed")
 createButton(otherSec, "Trampoline (100 Agi)", "TrainingAreas.Trampoline")
 createButton(otherSec, "Treadmills (100 Speed)", "TrainingAreas.Treadmills")
 createButton(otherSec, "Gravity Chamber (10K Agi/Speed)", "TrainingAreas.Gravity")
 
--- Misc / Spawn fallback
+-- Spawn / Safe Zone button
 local miscSec = teleportTab:AddSection("Misc")
+print("Created Misc section:", miscSec)
 miscSec:AddButton("Attempt Spawn / Safe Zone", function()
     local hrp = getHRP()
     if hrp then
