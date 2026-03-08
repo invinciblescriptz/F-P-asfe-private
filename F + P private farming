@@ -63,13 +63,8 @@ local locations = {
     {"Underground Base", "UndergroundBase"},
 }
 
--- Create buttons dynamically
-for i, loc in ipairs(locations) do
-    createButton(loc[1], buttonPositions[(i - 1) % #buttonPositions + 1] + Vector2.new(0, math.floor((i - 1) / #buttonPositions) * 60), loc[2])
-end
-
--- Function to create a button
-function createButton(name, position, location)
+-- Define the createButton function BEFORE using it
+local function createButton(name, position, location)
     local button = Instance.new("TextButton")
     button.Size = UDim2.new(0, 150, 0, 50)
     button.Position = position
@@ -79,4 +74,12 @@ function createButton(name, position, location)
     button.MouseButton1Click:Connect(function()
         teleportTo(location)
     end)
+end
+
+-- Create buttons dynamically
+for i, loc in ipairs(locations) do
+    local row = math.floor((i - 1) / 3) -- change number of columns here if needed
+    local col = (i - 1) % 3
+    local position = buttonPositions[col + 1] + Vector2.new(0, row * 60)
+    createButton(loc[1], position, loc[2])
 end
