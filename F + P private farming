@@ -1,11 +1,11 @@
--- Fixed AFS Farming Teleport GUI (using Elerium v2 library)
--- Works better in current Anime Fighting Simulator / Endless versions as of 2026
+-- Fixed and Enhanced AFS Farming Teleport GUI (using Elerium v2 library)
+-- Compatible with current Anime Fighting Simulator / Endless versions (2026+)
 
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/memejames/elerium-v2-ui-library/main/Library"))()
 
 local window = library:AddWindow("F + P afse farming", {
     main_color = Color3.fromRGB(0, 0, 255), -- Blue theme
-    min_size = Vector2.new(660, 660),
+    min_size = Vector2.new(470, 660),
     can_resize = false,
 })
 
@@ -18,11 +18,21 @@ local function getHRP()
     return nil
 end
 
--- Improved teleport function (handles dot paths like "TrainingAreas.Fridge.Part")
+-- Function to display notifications
+local function notify(title, text, duration)
+    game.StarterGui:SetCore("SendNotification", {
+        Title = title,
+        Text = text,
+        Duration = duration or 3
+    })
+end
+
+-- Improved teleport function (handles dot paths)
 local function teleportToPath(pathStr)
     local hrp = getHRP()
     if not hrp then
         warn("No character / HRP found!")
+        notify("Teleport Error", "Character or HRP not found.", 3)
         return
     end
     
@@ -31,38 +41,58 @@ local function teleportToPath(pathStr)
         current = current:FindFirstChild(part)
         if not current then
             warn("Path not found: " .. pathStr)
+            notify("Teleport Failed", "Path not found: " .. pathStr, 3)
             return
         end
     end
     
-    -- If we reached a valid part/model, teleport to its primary CFrame or Position + offset
+    -- Determine target CFrame
     local targetCFrame
     if current:IsA("Model") and current.PrimaryPart then
         targetCFrame = current.PrimaryPart.CFrame
     elseif current:IsA("BasePart") then
         targetCFrame = current.CFrame
     else
-        targetCFrame = CFrame.new(current.Position + Vector3.new(0, 5, 0)) -- fallback
-    end
-    
-    hrp.CFrame = targetCFrame + Vector3.new(0, 3, 0) -- slight offset to avoid clipping
-    print("Teleported to: " .. pathStr)
-end
-
--- Fallback teleport by name search (useful if exact path fails in updated game)
-local function teleportToName(name)
-    local hrp = getHRP()
-    if not hrp then return end
-    
-    for _, obj in ipairs(workspace:GetDescendants()) do
-        if obj.Name == name and (obj:IsA("BasePart") or (obj:IsA("Model") and obj.PrimaryPart)) then
-            local cf = obj:IsA("BasePart") and obj.CFrame or obj.PrimaryPart.CFrame
-            hrp.CFrame = cf + Vector3.new(0, 5, 0)
-            print("Teleported to object named: " .. name)
+        -- fallback: position + offset
+        if current.Position then
+            targetCFrame = CFrame.new(current.Position + Vector3.new(0, 5, 0))
+        else
+            warn("Cannot determine position for: " .. pathStr)
+            notify("Teleport Error", "Cannot determine position for: " .. pathStr, 3)
             return
         end
     end
+    
+    hrp.CFrame = targetCFrame + Vector3.new(0, 3, 0)
+    notify("Teleported", "Successfully teleported to: " .. pathStr, 2)
+end
+
+-- Fallback teleport by object name search
+local function teleportToName(name)
+    local hrp = getHRP()
+    if not hrp then 
+        warn("No HRP found for teleport to name.")
+        notify("Teleport Error", "Character or HRP not found.", 3)
+        return 
+    end
+    
+    for _, obj in ipairs(workspace:GetDescendants()) do
+        if obj.Name == name and (obj:IsA("BasePart") or (obj:IsA("Model") and obj.PrimaryPart)) then
+            local cf
+            if obj:IsA("BasePart") then
+                cf = obj.CFrame
+            elseif obj:IsA("Model") and obj.PrimaryPart then
+                cf = obj.PrimaryPart.CFrame
+            end
+            if cf then
+                hrp.CFrame = cf + Vector3.new(0, 5, 0)
+                notify("Teleported", "Object found: " .. name, 2)
+                return
+            end
+        end
+    end
     warn("No object found with name: " .. name)
+    notify("Teleport Failed", "Object not found: " .. name, 3)
 end
 
 -- ────────────────────────────────────────
@@ -70,93 +100,59 @@ end
 -- ────────────────────────────────────────
 local teleportTab = window:AddTab("Teleports")
 
+-- Helper function to create buttons with error handling
+local function createButton(section, label, path, fallbackName)
+    section:AddButton(label, function()
+        if path then
+            teleportToPath(path)
+        elseif fallbackName then
+            teleportToName(fallbackName)
+        else
+            warn("No path or name provided for button: " .. label)
+        end
+    end)
+end
+
 -- Strength
 local strengthSec = teleportTab:AddSection("Strength Training")
-strengthSec:AddButton("Dummy (100 Strength)", function()
-    teleportToPath("TrainingAreas.Dummy") -- or just "Dummy" if renamed
-end)
-
-strengthSec:AddButton("Fridge / Refrigerator (100K Strength)", function()
-    teleportToPath("TrainingAreas.Fridge") -- try "Refrigerator" or search by name if fails
-    -- fallback: teleportToName("Fridge")
-end)
-
-strengthSec:AddButton("Meteor (1M Strength)", function()
-    teleportToPath("TrainingAreas.Meteor")
-end)
-
-strengthSec:AddButton("Arena (100M Strength)", function()
-    teleportToPath("TrainingAreas.Arena")
-end)
-
-strengthSec:AddButton("Excalibur (1B Strength)", function()
-    teleportToPath("TrainingAreas.Excalibur") -- or "ExcaliburRocks", "Excalibur.Model"
-end)
-
-strengthSec:AddButton("Floating Island (50T+ Strength)", function()
-    teleportToPath("TrainingAreas.FloatingIsland")
-end)
+createButton(strengthSec, "Dummy (100 Strength)", "TrainingAreas.Dummy")
+createButton(strengthSec, "Fridge / Refrigerator (100K Strength)", "TrainingAreas.Fridge", "Fridge")
+createButton(strengthSec, "Meteor (1M Strength)", "TrainingAreas.Meteor")
+createButton(strengthSec, "Arena (100M Strength)", "TrainingAreas.Arena")
+createButton(strengthSec, "Excalibur (1B Strength)", "TrainingAreas.Excalibur")
+createButton(strengthSec, "Floating Island (50T+ Strength)", "TrainingAreas.FloatingIsland")
 
 -- Durability
 local durSec = teleportTab:AddSection("Durability Training")
-durSec:AddButton("Pirate Ship (100 Dur)", function()
-    teleportToPath("TrainingAreas.PirateShip") -- often "Pirate ship" or "PirateShip.Model"
-end)
-
-durSec:AddButton("Paw (1M Dur)", function()
-    teleportToPath("TrainingAreas.Paw")
-end)
-
-durSec:AddButton("Black Flames (100M Dur)", function()
-    teleportToPath("TrainingAreas.BlackFire") -- or "Black Flames.Fire"
-end)
+createButton(durSec, "Pirate Ship (100 Dur)", "TrainingAreas.PirateShip", "PirateShip")
+createButton(durSec, "Paw (1M Dur)", "TrainingAreas.Paw")
+createButton(durSec, "Black Flames (100M Dur)", "TrainingAreas.BlackFire", "BlackFire")
 
 -- Chakra
 local chakraSec = teleportTab:AddSection("Chakra Training")
-chakraSec:AddButton("Chakra Tree (100 Chak)", function()
-    teleportToPath("TrainingAreas.ChakraTree") -- often just "Tree" or "Tree1"
-end)
-
-chakraSec:AddButton("Waterfall (100K Chak)", function()
-    teleportToPath("TrainingAreas.Waterfall")
-end)
-
-chakraSec:AddButton("Fox Statue (10M Chak)", function()
-    teleportToPath("TrainingAreas.Fox")
-end)
-
-chakraSec:AddButton("Sakura Tree (100M Chak)", function()
-    teleportToPath("TrainingAreas.Sakura") -- was PinkSwords in very old versions
-end)
-
-chakraSec:AddButton("Ramen Shop (50T Chak)", function()
-    teleportToPath("TrainingAreas.RamenShop")
-end)
-
-chakraSec:AddButton("Ultimate Dragon (25QD Chak)", function()
-    teleportToPath("TrainingAreas.Dragon") -- or "Ultimate Dragon"
-end)
+createButton(chakraSec, "Chakra Tree (100 Chak)", "TrainingAreas.ChakraTree", "Tree")
+createButton(chakraSec, "Waterfall (100K Chak)", "TrainingAreas.Waterfall")
+createButton(chakraSec, "Fox Statue (10M Chak)", "TrainingAreas.Fox")
+createButton(chakraSec, "Sakura Tree (100M Chak)", "TrainingAreas.Sakura")
+createButton(chakraSec, "Ramen Shop (50T Chak)", "TrainingAreas.RamenShop")
+createButton(chakraSec, "Ultimate Dragon (25QD Chak)", "TrainingAreas.Dragon", "UltimateDragon")
 
 -- Agility / Speed / Other
 local otherSec = teleportTab:AddSection("Agility / Speed / Misc")
-otherSec:AddButton("Trampoline (100 Agi)", function()
-    teleportToPath("TrainingAreas.Trampoline")
-end)
-
-otherSec:AddButton("Treadmills (100 Speed)", function()
-    teleportToPath("TrainingAreas.Treadmills")
-end)
-
-otherSec:AddButton("Gravity Chamber (10K Agi/Speed)", function()
-    teleportToPath("TrainingAreas.Gravity")
-end)
+createButton(otherSec, "Trampoline (100 Agi)", "TrainingAreas.Trampoline")
+createButton(otherSec, "Treadmills (100 Speed)", "TrainingAreas.Treadmills")
+createButton(otherSec, "Gravity Chamber (10K Agi/Speed)", "TrainingAreas.Gravity")
 
 -- Misc / Spawn fallback
 local miscSec = teleportTab:AddSection("Misc")
 miscSec:AddButton("Attempt Spawn / Safe Zone", function()
     local hrp = getHRP()
     if hrp then
-        hrp.CFrame = CFrame.new(0, 50, 0) -- classic safe spawn — adjust if map origin changed
+        hrp.CFrame = CFrame.new(0, 50, 0)
+        notify("Spawn", "You have been teleported to the safe zone.", 2)
+    else
+        warn("HRP not found for spawn teleport.")
+        notify("Error", "Cannot find your character.", 3)
     end
 end)
 
