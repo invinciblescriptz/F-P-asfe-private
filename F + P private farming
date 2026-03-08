@@ -1,10 +1,7 @@
--- Fixed and Enhanced AFS Farming Teleport GUI (using Elerium v2 library)
--- Compatible with current Anime Fighting Simulator / Endless versions (2026+)
-
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/memejames/elerium-v2-ui-library/main/Library"))()
 
 local window = library:AddWindow("F + P afse farming", {
-    main_color = Color3.fromRGB(0, 0, 255), -- Blue theme
+    main_color = Color3.fromRGB(0, 0, 255),
     min_size = Vector2.new(470, 660),
     can_resize = false,
 })
@@ -27,7 +24,7 @@ local function notify(title, text, duration)
     })
 end
 
--- Improved teleport function (handles dot paths)
+-- Improved teleport function
 local function teleportToPath(pathStr)
     local hrp = getHRP()
     if not hrp then
@@ -46,14 +43,12 @@ local function teleportToPath(pathStr)
         end
     end
     
-    -- Determine target CFrame
     local targetCFrame
     if current:IsA("Model") and current.PrimaryPart then
         targetCFrame = current.PrimaryPart.CFrame
     elseif current:IsA("BasePart") then
         targetCFrame = current.CFrame
     else
-        -- fallback: position + offset
         if current.Position then
             targetCFrame = CFrame.new(current.Position + Vector3.new(0, 5, 0))
         else
@@ -67,7 +62,6 @@ local function teleportToPath(pathStr)
     notify("Teleported", "Successfully teleported to: " .. pathStr, 2)
 end
 
--- Fallback teleport by object name search
 local function teleportToName(name)
     local hrp = getHRP()
     if not hrp then 
@@ -95,13 +89,9 @@ local function teleportToName(name)
     notify("Teleport Failed", "Object not found: " .. name, 3)
 end
 
--- ────────────────────────────────────────
---                Teleports Tab
--- ────────────────────────────────────────
-local teleportTab = window:AddTab("Teleports")
-
--- Helper function to create buttons with error handling
+-- Helper to add buttons with debugging
 local function createButton(section, label, path, fallbackName)
+    print("Creating button: " .. label)
     section:AddButton(label, function()
         if path then
             teleportToPath(path)
@@ -112,6 +102,9 @@ local function createButton(section, label, path, fallbackName)
         end
     end)
 end
+
+-- Teleports Tab
+local teleportTab = window:AddTab("Teleports")
 
 -- Strength
 local strengthSec = teleportTab:AddSection("Strength Training")
@@ -137,8 +130,8 @@ createButton(chakraSec, "Sakura Tree (100M Chak)", "TrainingAreas.Sakura")
 createButton(chakraSec, "Ramen Shop (50T Chak)", "TrainingAreas.RamenShop")
 createButton(chakraSec, "Ultimate Dragon (25QD Chak)", "TrainingAreas.Dragon", "UltimateDragon")
 
--- Agility / Speed / Other
-local otherSec = teleportTab:AddSection("Agility / Speed / Misc")
+-- Other
+local otherSec = teleportTab:AddSection("Misc / Speed")
 createButton(otherSec, "Trampoline (100 Agi)", "TrainingAreas.Trampoline")
 createButton(otherSec, "Treadmills (100 Speed)", "TrainingAreas.Treadmills")
 createButton(otherSec, "Gravity Chamber (10K Agi/Speed)", "TrainingAreas.Gravity")
