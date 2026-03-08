@@ -6,6 +6,8 @@ local window = library:AddWindow("F + P afse farming", {
     can_resize = false,
 })
 
+local teleportTab = window:AddTab("Teleport")
+
 -- Extended Teleport Locations
 local TeleportLocations = {
     ["Spawn"] = Vector3.new(0, 10, 0),
