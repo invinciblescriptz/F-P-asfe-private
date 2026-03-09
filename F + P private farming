@@ -29,11 +29,11 @@ teleportTab:AddButton("10M strength", function()
 end)
 
 teleportTab:AddButton("100M strength", function()
-    teleportPlayer(CFrame.new(714.550781, 140.580719, 938.548767, 0.957564414, -2.30511921e-09, -0.288219333, -1.17250814e-08, 1, -4.69525752e-08, 0.288219333, 4.83395119e-08, 0.957564414))
+    teleportPlayer(CFrame.new(-51.0139999, 63.5114403, -1302.73206, 1, -7.41235482e-08, 2.76920143e-13, 7.41235482e-08, 1, -1.13816876e-08, -2.76076498e-13, 1.13816876e-08,))
 end)
 
 teleportTab:AddButton("1b strength", function()
-    teleportPlayer(CFrame.new(-51.0139999, 63.5114403, -1302.73206, 1, -7.41235482e-08, 2.76920143e-13, 7.41235482e-08, 1, -1.13816876e-08, -2.76076498e-13, 1.13816876e-08, 1))
+    teleportPlayer(CFrame.new(714.550781, 140.580719, 938.548767, 0.957564414, -2.30511921e-09, -0.288219333, -1.17250814e-08, 1, -4.69525752e-08, 0.288219333, 4.83395119e-08, 0.957564414))
 end)
 
 teleportTab:AddButton("100b strength", function()
