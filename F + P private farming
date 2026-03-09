@@ -7,6 +7,26 @@ local window = library:AddWindow("F + P ♥️|| AFSE farming", {
 })
 
 local teleportTab = window:AddTab("Teleport")
+local bossTab = window:AddTab("Bosses")
+local miscTab = window:AddTab("Misc")
+
+miscTab:AddButton("Prevent Lag (Boost FPS)", function()
+    local Lighting = game:GetService("Lighting")
+    Lighting.GlobalShadows = false
+    Lighting.Brightness = 1
+    Lighting.ClockTime = 12
+    Lighting.FogEnd = 9999
+    Lighting.FogStart = 0
+    for _, v in pairs(Workspace:GetDescendants()) do
+        if v:IsA("ParticleEmitter") or v:IsA("Smoke") or v:IsA("Fire") or v:IsA("Sparkles") or
+           v:IsA("BloomEffect") or v:IsA("BlurEffect") or v:IsA("DepthOfFieldEffect") or v:IsA("SunRaysEffect") then
+            v.Enabled = false
+        end
+    end
+    settings().Rendering.QualityLevel = Enum.QualityLevel.Level01
+end)
+
+=======Teleports========
 
 teleportTab:AddButton("1M strength", function()
     local player = game.Players.LocalPlayer
@@ -21,5 +41,21 @@ teleportTab:AddButton("10M strength", function()
     if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
         -- Teleport the player to coordinates (x, y, z)
         player.Character.HumanoidRootPart.CFrame = CFrame.new(-2274.72778, 665.36792, 528.127563, -0.403091997, 9.96172655e-09, 0.915159464, 1.53711444e-08, 1, -4.11484713e-09, -0.915159464, 1.24083863e-08, -0.403091997)
+    end
+end)
+
+teleportTab:AddButton("100M strength", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(-51.0139999, 63.5114403, -1302.73206, 1, -6.09172233e-08, 1.21724521e-14, 6.09172233e-08, 1, -9.3492174e-09, -1.16029241e-14, 9.3492174e-09, 1)
+    end
+end)
+
+teleportTab:AddButton("1b strength", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(-51.0139999, 63.5114403, -1302.73206, 1, -7.41235482e-08, 2.76920143e-13, 7.41235482e-08, 1, -1.13816876e-08, -2.76076498e-13, 1.13816876e-08, 1)
     end
 end)
