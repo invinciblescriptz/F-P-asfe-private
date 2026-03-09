@@ -11,7 +11,7 @@ local bossTab = window:AddTab("Bosses")
 local npcTab = window:AddTab("NPC")
 local miscTab = window:AddTab("Misc")
 
--- Function to teleport player to specific coordinates
+-- Function to teleport player to specific CFrame
 local function teleportPlayer(cframe)
     local player = game.Players.LocalPlayer
     if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
@@ -19,7 +19,7 @@ local function teleportPlayer(cframe)
     end
 end
 
--- Teleport buttons
+-- Teleport Buttons
 teleportTab:AddButton("1M strength", function()
     teleportPlayer(CFrame.new(-905.62, 82.07, 172.17))
 end)
@@ -29,7 +29,7 @@ teleportTab:AddButton("10M strength", function()
 end)
 
 teleportTab:AddButton("100M strength", function()
-    teleportPlayer(CFrame.new(-51.0139999, 63.5114403, -1302.73206, 1, -7.41235482e-08, 2.76920143e-13, 7.41235482e-08, 1, -1.13816876e-08, -2.76076498e-13, 1.13816876e-08,))
+    teleportPlayer(CFrame.new(-51.0139999, 63.5114403, -1302.73206, 1, -7.41235482e-08, 2.76920143e-13, 7.41235482e-08, 1, -1.13816876e-08, -2.76076498e-13, 1.13816876e-08))
 end)
 
 teleportTab:AddButton("1b strength", function()
@@ -37,7 +37,7 @@ teleportTab:AddButton("1b strength", function()
 end)
 
 teleportTab:AddButton("100b strength", function()
-    teleportPlayer(CFrame.new(1846.15295, 140.532867, 90.4680023, 1, -3.19980735e-08, -5.09346593e-14, 3.19980735e-08, 1, 4.07548555e-08, 4.96305809e-14, -4.07548555e-08, 1))
+    teleportPlayer(CFrame.new(1846.15295, 140.532867, 90.4680023, 1, -3.19980735e-08, -5.09346593e-14, 3.19980735e-08, 1, 4.07548555e-08, 4.96305809e-14, -4.07548555e-08))
 end)
 
 teleportTab:AddButton("5T strength", function()
@@ -60,6 +60,7 @@ teleportTab:AddButton("1000Qn strength", function()
     teleportPlayer(CFrame.new(3933.35498, 724.104492, -1197.85803, 1, -8.5261334e-08, -1.9429301e-14, 8.5261334e-08, 1, 6.87652468e-09, 1.88430001e-14, -6.87652468e-09, 1))
 end)
 
+-- Dura teleport buttons
 teleportTab:AddButton("1m dura", function()
     teleportPlayer(CFrame.new(-621.54303, 178.33287, 741.890015, 1, -6.2650571e-08, 4.22606259e-13, 6.2650571e-08, 1, -4.67080987e-08, -4.1967997e-13, 4.67080987e-08, 1))
 end)
@@ -100,6 +101,7 @@ teleportTab:AddButton("100Qn dura", function()
     teleportPlayer(CFrame.new(1726.68701, 2304.39966, 61.9370003, 1, -6.83984851e-08, 6.48838351e-14, 6.83984851e-08, 1, -6.16340969e-08, -6.06681521e-14, 6.16340969e-08, 1))
 end)
 
+-- Charcoal teleport buttons
 teleportTab:AddButton("1m charcoal", function()
     teleportPlayer(CFrame.new(1576.37305, 388.082794, 675.159973, 1, -2.56392916e-08, 8.61154003e-15, 2.56392916e-08, 1, -2.31262174e-08, -8.01860087e-15, 2.31262174e-08, 1))
 end)
@@ -140,6 +142,7 @@ teleportTab:AddButton("charcoal tree", function()
     teleportPlayer(CFrame.new(358.65625, 291.694, 1863.7865, 0.995459676, 3.80695404e-08, 0.0951843411, -4.12339283e-08, 1, 3.12779775e-08, -0.0951843411, -3.50607898e-08, 0.995459676))
 end)
 
+-- Special locations
 teleportTab:AddButton("100k speedy boi", function()
     teleportPlayer(CFrame.new(3484.51709, 59.9308243, 144.701004, 1, -2.79926393e-08, -2.41393033e-13, 2.79926393e-08, 1, 6.66034765e-08, 2.39528639e-13, -6.66034765e-08, 1))
 end)
@@ -148,6 +151,7 @@ teleportTab:AddButton("5mil speedy boi", function()
     teleportPlayer(CFrame.new(4111.81201, 60.852787, 849.557007, 1, -7.67132491e-09, -1.91139032e-14, 7.67132491e-09, 1, 1.82364044e-08, 1.89740056e-14, -1.82364044e-08, 1))
 end)
 
+-- Miscellaneous
 miscTab:AddButton("Prevent Lag (Boost FPS)", function()
     local Lighting = game:GetService("Lighting")
     Lighting.GlobalShadows = false
@@ -155,7 +159,7 @@ miscTab:AddButton("Prevent Lag (Boost FPS)", function()
     Lighting.ClockTime = 12
     Lighting.FogEnd = 9999
     Lighting.FogStart = 0
-    for _, v in pairs(Workspace:GetDescendants()) do
+    for _, v in pairs(workspace:GetDescendants()) do
         if v:IsA("ParticleEmitter") or v:IsA("Smoke") or v:IsA("Fire") or v:IsA("Sparkles") or
            v:IsA("BloomEffect") or v:IsA("BlurEffect") or v:IsA("DepthOfFieldEffect") or v:IsA("SunRaysEffect") then
             v.Enabled = false
@@ -164,6 +168,7 @@ miscTab:AddButton("Prevent Lag (Boost FPS)", function()
     settings().Rendering.QualityLevel = Enum.QualityLevel.Level01
 end)
 
+-- NPC Teleports
 npcTab:AddButton("ichigo", function()
     teleportPlayer(CFrame.new(297.918121, 220.930817, -1614.56653, 0.513736904, -9.54774038e-09, -0.857947767, -1.59238234e-09, 1, -1.20820944e-08, 0.857947767, 7.57319896e-09, 0.513736904))
 end)
