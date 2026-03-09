@@ -11,60 +11,138 @@ local bossTab = window:AddTab("Bosses")
 local npcTab = window:AddTab("NPC")
 local miscTab = window:AddTab("Misc")
 
--- Helper function to teleport the player
+-- Function to teleport the player to a specific CFrame
 local function teleportPlayer(cframe)
     local player = game.Players.LocalPlayer
-    local character = player and player.Character
-    local hrp = character and character:FindFirstChild("HumanoidRootPart")
-    if hrp then
-        hrp.CFrame = cframe
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        player.Character.HumanoidRootPart.CFrame = cframe
     end
 end
 
--- Define teleport points with descriptive names and CFrames
-local teleportPoints = {
-    -- Strength levels
-    {name = "1M strength", cframe = CFrame.new(-905.62, 82.07, 172.17)},
-    {name = "10M strength", cframe = CFrame.new(-2274.72778, 665.36792, 528.127563, -0.403091997, 9.96172655e-09, 0.915159464, 1.53711444e-08, 1, -4.11484713e-09, -0.915159464, 1.24083863e-08, -0.403091997)},
-    {name = "100M strength", cframe = CFrame.new(-51.014, 63.51144, -1302.732, 1, -7.41235482e-08, 2.76920143e-13, 7.41235482e-08, 1, -1.13816876e-08, -2.76076498e-13, 1.13816876e-08)},
-    {name = "1B strength", cframe = CFrame.new(714.55, 140.58, 938.55, 0.9575644, -2.3051192e-09, -0.28821933, -1.1725081e-08, 1, -4.6952575e-08, 0.28821933, 4.8339512e-08, 0.9575644)},
-    {name = "100B strength", cframe = CFrame.new(1846.15, 140.53, 90.47, 1, -3.1998e-08, -5.09e-14, 3.1998e-08, 1, 4.0755e-08, 4.9631e-14, -4.0755e-08)},
-    {name = "5T strength", cframe = CFrame.new(1846.15, 140.53, 90.47, 1, 5.7007e-08, -1.5664e-12, -5.7007e-08, 1, -7.2733e-08, 1.5623e-12, 7.2733e-08)},
-    {name = "250T strength", cframe = CFrame.new(4315.36, 63.52, -524.74, 0.15727, 9.17566e-08, -0.98755, 5.48313e-08, 1, 1.01645e-07, 0.98755, -7.0135e-08, 0.15727)},
-    {name = "50qd strength", cframe = CFrame.new(797.98, 231.73, -1002.74, 1, 2.0192e-09, -2.18e-14, -2.0192e-09, 1, -2.1597e-08, 2.1757e-14, 2.1597e-08, 1)},
-    {name = "1Qn strength", cframe = CFrame.new(3886.15, 127.19, 875.65, -0.8556, -1.1148e-07, -0.51763, -9.0731e-08, 1, -6.5397e-08, 0.51763, -8.9886e-09, -0.8556)},
-    {name = "1000Qn strength", cframe = CFrame.new(3933.35, 724.10, -1197.86, 1, -8.5261e-08, -1.94e-14, 8.5261e-08, 1, 6.8765e-09, 1.8843e-14, -6.8765e-09, 1)},
-    -- Durability teleport points
-    {name = "1m dura", cframe = CFrame.new(-621.54, 178.33, 741.89)},
-    {name = "10m dura", cframe = CFrame.new(-1102.31, 211.96, -946.14)},
-    {name = "100m dura", cframe = CFrame.new(-341.29, 71.95, -1653.58)},
-    {name = "1b dura", cframe = CFrame.new(2494.74, 1539.05, -351.09)},
-    {name = "100b dura", cframe = CFrame.new(-2171.54, 616.85, 525.64)},
-    {name = "5T dura", cframe = CFrame.new(2188.85, 517.82, 576.67)},
-    {name = "250T dura", cframe = CFrame.new(1671.97, 423.26, -1291.61)},
-    {name = "50qd dura", cframe = CFrame.new(165.32, 772.92, -716.06)},
-    {name = "1Qn dura", cframe = CFrame.new(2590.82, 62.56, 1697.29)},
-    {name = "100Qn dura", cframe = CFrame.new(1726.69, 2304.40, 61.94)},
-    -- Charcoal teleport points
-    {name = "1m charcoal", cframe = CFrame.new(1576.37, 388.08, 675.16)},
-    {name = "10m charcoal", cframe = CFrame.new(334.13, -130.25, -1840.66)},
-    {name = "100m charcoal", cframe = CFrame.new(1025.96, 250.33, -631.35)},
-    {name = "1b charcoal", cframe = CFrame.new(3053.94, 110.23, 1105.88)},
-    {name = "100b charcoal", cframe = CFrame.new(-2171.54, 616.85, 525.64)},
-    {name = "5T charcoal", cframe = CFrame.new(-17.09, 61.40, -478.99)},
-    {name = "250T charcoal", cframe = CFrame.new(-396.26, 1236.69, 670.55)},
-    {name = "50qd charcoal", cframe = CFrame.new(-742.16, 2794.50, 597.36)},
-    {name = "1Qn charcoal", cframe = CFrame.new(3254.88, -441.65, -242.20)},
-}
+-- Teleport buttons with correct formatting and CFrame parameters
+teleportTab:AddButton("1M strength", function()
+    teleportPlayer(CFrame.new(-905.62, 82.07, 172.17))
+end)
 
--- Add each teleport button
-for _, point in ipairs(teleportPoints) do
-    teleportTab:AddButton(point.name, function()
-        teleportPlayer(point.cframe)
-    end)
-end
+teleportTab:AddButton("10M strength", function()
+    teleportPlayer(CFrame.new(-2274.72778, 665.36792, 528.127563, -0.403091997, 9.96172655e-09, 0.915159464, 1.53711444e-08, 1, -4.11484713e-09, -0.915159464, 1.24083863e-08, -0.403091997))
+end)
 
--- Miscellaneous: prevent lag / boost FPS
+teleportTab:AddButton("100M strength", function()
+    teleportPlayer(CFrame.new(-51.0139999, 63.5114403, -1302.73206))
+end)
+
+teleportTab:AddButton("1b strength", function()
+    teleportPlayer(CFrame.new(714.550781, 140.580719, 938.548767))
+end)
+
+teleportTab:AddButton("100b strength", function()
+    teleportPlayer(CFrame.new(1846.15295, 140.532867, 90.4680023))
+end)
+
+teleportTab:AddButton("5T strength", function()
+    teleportPlayer(CFrame.new(1846.15295, 140.532867, 90.4680023))
+end)
+
+teleportTab:AddButton("250T strength", function()
+    teleportPlayer(CFrame.new(4315.36035, 63.5203743, -524.74176))
+end)
+
+teleportTab:AddButton("50qd strength", function()
+    teleportPlayer(CFrame.new(797.981018, 231.731964, -1002.742))
+end)
+
+teleportTab:AddButton("1Qn strength", function()
+    teleportPlayer(CFrame.new(3886.14673, 127.192482, 875.65448))
+end)
+
+teleportTab:AddButton("1000Qn strength", function()
+    teleportPlayer(CFrame.new(3933.35498, 724.104492, -1197.85803))
+end)
+
+-- Dura teleport buttons
+teleportTab:AddButton("1m dura", function()
+    teleportPlayer(CFrame.new(-621.54303, 178.33287, 741.890015))
+end)
+
+teleportTab:AddButton("10m dura", function()
+    teleportPlayer(CFrame.new(-1102.31104, 211.962875, -946.14502))
+end)
+
+teleportTab:AddButton("100m dura", function()
+    teleportPlayer(CFrame.new(-341.295013, 71.952919, -1653.57898))
+end)
+
+teleportTab:AddButton("1b dura", function()
+    teleportPlayer(CFrame.new(2494.74365, 1539.05249, -351.093262))
+end)
+
+teleportTab:AddButton("100b dura", function()
+    teleportPlayer(CFrame.new(-2171.54297, 616.849731, 525.640015))
+end)
+
+teleportTab:AddButton("5T dura", function()
+    teleportPlayer(CFrame.new(2188.85107, 517.823425, 576.671448))
+end)
+
+teleportTab:AddButton("250T dura", function()
+    teleportPlayer(CFrame.new(1671.97473, 423.262909, -1291.61511))
+end)
+
+teleportTab:AddButton("50qd dura", function()
+    teleportPlayer(CFrame.new(165.322006, 772.924133, -716.060974))
+end)
+
+teleportTab:AddButton("1Qn dura", function()
+    teleportPlayer(CFrame.new(2590.823, 62.5618439, 1697.29504))
+end)
+
+teleportTab:AddButton("100Qn dura", function()
+    teleportPlayer(CFrame.new(1726.68701, 2304.39966, 61.9370003))
+end)
+
+-- Charcoal teleport buttons
+teleportTab:AddButton("1m charcoal", function()
+    teleportPlayer(CFrame.new(1576.37305, 388.082794, 675.159973))
+end)
+
+teleportTab:AddButton("10m charcoal", function()
+    teleportPlayer(CFrame.new(334.134003, -130.258972, -1840.66003))
+end)
+
+teleportTab:AddButton("100m charcoal", function()
+    teleportPlayer(CFrame.new(1025.95532, 250.33287, -631.354309))
+end)
+
+teleportTab:AddButton("1b charcoal", function()
+    teleportPlayer(CFrame.new(3053.94092, 110.233376, 1105.88))
+end)
+
+teleportTab:AddButton("100b charcoal", function()
+    teleportPlayer(CFrame.new(-2171.54297, 616.849731, 525.640015))
+end)
+
+teleportTab:AddButton("5T charcoal", function()
+    teleportPlayer(CFrame.new(-17.0939999, 61.4061432, -478.994995))
+end)
+
+teleportTab:AddButton("250T charcoal", function()
+    teleportPlayer(CFrame.new(-396.256989, 1236.69153, 670.549988))
+end)
+
+teleportTab:AddButton("50qd charcoal", function()
+    teleportPlayer(CFrame.new(-742.157532, 2794.49707, 597.357605))
+end)
+
+teleportTab:AddButton("1Qn charcoal", function()
+    teleportPlayer(CFrame.new(3254.87988, -441.64502, -242.198975))
+end)
+
+teleportTab:AddButton("charcoal tree", function()
+    teleportPlayer(CFrame.new(358.65625, 291.694, 1863.7865))
+end)
+
+-- Miscellaneous for FPS Boost
 miscTab:AddButton("Prevent Lag (Boost FPS)", function()
     local Lighting = game:GetService("Lighting")
     Lighting.GlobalShadows = false
@@ -72,7 +150,6 @@ miscTab:AddButton("Prevent Lag (Boost FPS)", function()
     Lighting.ClockTime = 12
     Lighting.FogEnd = 9999
     Lighting.FogStart = 0
-
     for _, v in pairs(workspace:GetDescendants()) do
         if v:IsA("ParticleEmitter") or v:IsA("Smoke") or v:IsA("Fire") or v:IsA("Sparkles") or
            v:IsA("BloomEffect") or v:IsA("BlurEffect") or v:IsA("DepthOfFieldEffect") or v:IsA("SunRaysEffect") then
@@ -82,7 +159,7 @@ miscTab:AddButton("Prevent Lag (Boost FPS)", function()
     settings().Rendering.QualityLevel = Enum.QualityLevel.Level01
 end)
 
--- NPC teleport
+-- NPC teleportation
 npcTab:AddButton("ichigo", function()
     teleportPlayer(CFrame.new(297.918121, 220.930817, -1614.56653))
 end)
