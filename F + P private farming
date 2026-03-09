@@ -41,3 +41,51 @@ teleportTab:AddButton("1b strength", function()
         player.Character.HumanoidRootPart.CFrame = CFrame.new(-51.0139999, 63.5114403, -1302.73206, 1, -7.41235482e-08, 2.76920143e-13, 7.41235482e-08, 1, -1.13816876e-08, -2.76076498e-13, 1.13816876e-08, 1)
     end
 end)
+
+teleportTab:AddButton("100b strength", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(1846.15295, 140.532867, 90.4680023, 1, -3.19980735e-08, -5.09346593e-14, 3.19980735e-08, 1, 4.07548555e-08, 4.96305809e-14, -4.07548555e-08, 1)
+    end
+end)
+
+teleportTab:AddButton("5T strength", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(1846.15295, 140.532867, 90.4680023, 1, 5.70071776e-08, -1.56642397e-12, -5.70071776e-08, 1, -7.27330445e-08, 1.56227765e-12, 7.27330445e-08, 1)
+    end
+end)
+
+teleportTab:AddButton("250T strength", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(4315.36035, 63.5203743, -524.74176, 0.157272413, 9.17566396e-08, -0.987555265, 5.48312933e-08, 1, 1.01645035e-07, 0.987555265, -7.01348952e-08, 0.157272413)
+    end
+end)
+
+teleportTab:AddButton("50qd strength", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(797.981018, 231.731964, -1002.742, 1, 2.01920347e-09, -2.1800829e-14, -2.01920347e-09, 1, -2.15970282e-08, 2.17572203e-14, 2.15970282e-08, 1)
+    end
+end)
+
+teleportTab:AddButton("1Qn strength", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(3886.14673, 127.192482, 875.65448, -0.855604351, -1.1148137e-07, -0.517630339, -9.07311559e-08, 1, -6.53968542e-08, 0.517630339, -8.98863828e-09, -0.855604351)
+    end
+end)
+
+teleportTab:AddButton("1000Qn strength", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(3933.35498, 724.104492, -1197.85803, 1, -8.5261334e-08, -1.9429301e-14, 8.5261334e-08, 1, 6.87652468e-09, 1.88430001e-14, -6.87652468e-09, 1)
+    end
+end)
