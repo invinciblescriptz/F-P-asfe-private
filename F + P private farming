@@ -7,3 +7,7 @@ local window = library:AddWindow("F + P ♥️|| AFSE farming", {
 })
 
 local teleportTab = window:AddTab("Teleport")
+
+teleportTab:AddButton("1M strength", function()
+-905.623169, 82.0793762, 172.1745, 0.987735569, -0.112320028, 0.108455651, 0.0944323093, -0.123430744, -0.987849891, 0.124342084, 0.985976279, -0.111310288
+end)
