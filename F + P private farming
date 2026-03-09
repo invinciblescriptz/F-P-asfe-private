@@ -179,14 +179,3 @@ end)
 npcTab:AddButton("Remgonuk", function()
     teleportPlayer(CFrame.new(4293.25098, 59.9808235, 101.262352, -0.95811981, 2.59109445e-09, -0.286367565, 4.79066176e-10, 1, 7.44529682e-09, 0.286367565, 6.99629732e-09, -0.95811981))
 end)
-
-miscTab:AddSwitch("embrace the view", function(state)
-    if state then
-        -- When switch is turned on, teleport the player
-        teleportPlayer(CFrame.new(4293.25098, 59.9808235, 101.262352, -0.95811981, 2.59109445e-09, -0.286367565, 4.79066176e-10, 1, 7.44529682e-09, 0.286367565, 6.99629732e-09, -0.95811981))
-    else
-        -- When switch is turned off, you can add code if needed
-        -- For example, teleport back to a default position or do nothing
-        -- teleportPlayer(CFrame.new(defaultPosition))
-    end
-end)
