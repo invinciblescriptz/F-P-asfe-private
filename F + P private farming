@@ -89,3 +89,170 @@ teleportTab:AddButton("1000Qn strength", function()
         player.Character.HumanoidRootPart.CFrame = CFrame.new(3933.35498, 724.104492, -1197.85803, 1, -8.5261334e-08, -1.9429301e-14, 8.5261334e-08, 1, 6.87652468e-09, 1.88430001e-14, -6.87652468e-09, 1)
     end
 end)
+
+teleportTab:AddButton("1m dura", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(-621.54303, 178.33287, 741.890015, 1, -6.2650571e-08, 4.22606259e-13, 6.2650571e-08, 1, -4.67080987e-08, -4.1967997e-13, 4.67080987e-08, 1)
+    end
+end)
+
+teleportTab:AddButton("10m dura", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(-1102.31104, 211.962875, -946.14502, 1, 3.61321e-08, 1.61597369e-14, -3.61321e-08, 1, 2.69685216e-08, -1.51853085e-14, -2.69685216e-08, 1)
+    end
+end)
+
+teleportTab:AddButton("100m dura", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(-341.295013, 71.952919, -1653.57898, 1, 8.1236351e-08, 2.43443978e-14, -8.1236351e-08, 1, 6.070848e-08, -1.94126636e-14, -6.070848e-08, 1)
+    end
+end)
+
+teleportTab:AddButton("1b dura", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(2494.74365, 1539.05249, -351.093262, 0.994515836, -2.18120952e-08, -0.104586348, 1.63261245e-08, 1, -5.33100959e-08, 0.104586348, 5.13102414e-08, 0.994515836)
+    end
+end)
+
+teleportTab:AddButton("100b dura", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(-2171.54297, 616.849731, 525.640015, 1, 2.78600076e-08, 3.87720556e-14, -2.78600076e-08, 1, 9.16167622e-08, -3.62196133e-14, -9.16167622e-08, 1)
+    end
+end)
+
+teleportTab:AddButton("5T dura", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(2188.85107, 517.823425, 576.671448, 0.99974823, 1.06618607e-08, 0.0224382021, -1.11795622e-08, 1, 2.29468657e-08, -0.0224382021, -2.3191939e-08, 0.99974823)
+    end
+end)
+
+teleportTab:AddButton("250T dura", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(1671.97473, 423.262909, -1291.61511, 0.999993026, -4.50041338e-09, -0.00373420538, 4.48531567e-09, 1, -4.05150891e-09, 0.00373420538, 4.03473166e-09, 0.999993026)
+    end
+end)
+
+teleportTab:AddButton("50qd dura", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(165.322006, 772.924133, -716.060974, 1, 1.7310203e-08, 1.20002342e-13, -1.7310203e-08, 1, 1.554967e-08, -1.19733176e-13, -1.554967e-08, 1)
+    end
+end)
+
+teleportTab:AddButton("1Qn dura", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(2590.823, 62.5618439, 1697.29504, 1, -3.05529859e-08, 1.53466175e-13, 3.05529859e-08, 1, -2.74990146e-08, -1.52625999e-13, 2.74990146e-08, 1)
+    end
+end)
+
+teleportTab:AddButton("100Qn dura", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(1726.68701, 2304.39966, 61.9370003, 1, -6.83984851e-08, 6.48838351e-14, 6.83984851e-08, 1, -6.16340969e-08, -6.06681521e-14, 6.16340969e-08, 1)
+    end
+end)
+
+teleportTab:AddButton("1m charcoal", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(1576.37305, 388.082794, 675.159973, 1, -2.56392916e-08, 8.61154003e-15, 2.56392916e-08, 1, -2.31262174e-08, -8.01860087e-15, 2.31262174e-08, 1)
+    end
+end)
+
+teleportTab:AddButton("10m charcoal", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(334.134003, -130.258972, -1840.66003, 1, -1.01203792e-08, 6.45691318e-14, 1.01203792e-08, 1, -9.11960729e-09, -6.44768391e-14, 9.11960729e-09, 1)
+    end
+end)
+
+teleportTab:AddButton("100m charcoal", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(1025.95532, 250.33287, -631.354309, -0.976074696, 3.96296542e-08, -0.217435479, 3.15736237e-08, 1, 4.05243803e-08, 0.217435479, 3.2689595e-08, -0.976074696)
+    end
+end)
+
+teleportTab:AddButton("1b charcoal", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(3053.94092, 110.233376, 1105.88, 1, -2.19682335e-08, -6.61084617e-14, 2.19682335e-08, 1, 1.81266664e-08, 6.57102478e-14, -1.81266664e-08, 1)
+    end
+end)
+
+teleportTab:AddButton("100b charcoal", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(1552.18799, 88.0570755, 1717.49805, 1, -1.17141079e-08, -1.01628173e-14, 1.17141079e-08, 1, 9.65470637e-09, 1.00497207e-14, -9.65470637e-09, 1)
+    end
+end)
+
+teleportTab:AddButton("5T charcoal", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(-17.0939999, 61.4061432, -478.994995, 1, 2.63649209e-08, -1.23049374e-14, -2.63649209e-08, 1, -2.17220286e-08, 1.17322381e-14, 2.17220286e-08, 1)
+    end
+end)
+
+teleportTab:AddButton("250T" charcoal, function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(-396.256989, 1236.69153, 670.549988, 1, -2.86684241e-08, -1.36555467e-14, 2.86684241e-08, 1, 2.35959483e-08, 1.29790884e-14, -2.35959483e-08, 1)
+    end
+end)
+
+teleportTab:AddButton("50qd charcoal", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(-742.157532, 2794.49707, 597.357605, -0.948044002, -8.8696428e-09, 0.318139315, -1.97626221e-07, 1, -5.61039485e-07, -0.318139315, -5.94762753e-07, -0.948044002)
+end)
+
+teleportTab:AddButton("1Qn charcoal", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(3254.87988, -441.64502, -242.198975, -7.16817725e-15, -8.18557133e-09, 1, -8.21828994e-10, 1, 8.18557133e-09, -1, -8.21828994e-10, -7.17490439e-15)
+    end
+end)
+
+teleportTab:AddButton("charcoal tree", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(358.65625, 291.694, 1863.7865, 0.995459676, 3.80695404e-08, 0.0951843411, -4.12339283e-08, 1, 3.12779775e-08, -0.0951843411, -3.50607898e-08, 0.995459676)
+    end
+end)
+
+teleportTab:AddButton("5mil speedy boi", function()
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+        -- Teleport the player to coordinates (x, y, z)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(4111.81201, 60.2548752, 849.557007, 1, -3.3554219e-08, 2.2738774e-14, 3.3554219e-08, 1, -3.09265928e-08, -2.1701057e-14, 3.09265928e-08, 1)
+    end
+end)
