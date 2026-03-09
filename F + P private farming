@@ -29,7 +29,7 @@ teleportTab:AddButton("10M strength", function()
 end)
 
 teleportTab:AddButton("100M strength", function()
-    teleportPlayer(CFrame.new(-51.0139999, 63.5114403, -1302.73206, 1, -7.41235482e-08, 2.76920143e-13, 7.41235482e-08, 1, -1.13816876e-08, -2.76076498e-13, 1.13816876e-08))
+    teleportPlayer(CFrame.new(-51.0139999, 63.5114403, -1302.73206, 1, -7.41235482e-08, 2.76920143e-13, 7.41235482e-08, 1, -1.13816876e-08, -2.76076498e-13, 1.13816876e-08,))
 end)
 
 teleportTab:AddButton("1b strength", function()
@@ -37,7 +37,7 @@ teleportTab:AddButton("1b strength", function()
 end)
 
 teleportTab:AddButton("100b strength", function()
-    teleportPlayer(CFrame.new(1846.15295, 140.532867, 90.4680023, 1, -3.19980735e-08, -5.09346593e-14, 3.19980735e-08, 1, 4.07548555e-08, 4.96305809e-14, -4.07548555e-08))
+    teleportPlayer(CFrame.new(1846.15295, 140.532867, 90.4680023, 1, -3.19980735e-08, -5.09346593e-14, 3.19980735e-08, 1, 4.07548555e-08, 4.96305809e-14, -4.07548555e-08, 1))
 end)
 
 teleportTab:AddButton("5T strength", function()
@@ -148,7 +148,38 @@ teleportTab:AddButton("5mil speedy boi", function()
     teleportPlayer(CFrame.new(4111.81201, 60.852787, 849.557007, 1, -7.67132491e-09, -1.91139032e-14, 7.67132491e-09, 1, 1.82364044e-08, 1.89740056e-14, -1.82364044e-08, 1))
 end)
 
--- Fix for the NPC "ichigo" button
+miscTab:AddButton("Prevent Lag (Boost FPS)", function()
+    local Lighting = game:GetService("Lighting")
+    Lighting.GlobalShadows = false
+    Lighting.Brightness = 1
+    Lighting.ClockTime = 12
+    Lighting.FogEnd = 9999
+    Lighting.FogStart = 0
+    for _, v in pairs(Workspace:GetDescendants()) do
+        if v:IsA("ParticleEmitter") or v:IsA("Smoke") or v:IsA("Fire") or v:IsA("Sparkles") or
+           v:IsA("BloomEffect") or v:IsA("BlurEffect") or v:IsA("DepthOfFieldEffect") or v:IsA("SunRaysEffect") then
+            v.Enabled = false
+        end
+    end
+    settings().Rendering.QualityLevel = Enum.QualityLevel.Level01
+end)
+
 npcTab:AddButton("ichigo", function()
     teleportPlayer(CFrame.new(297.918121, 220.930817, -1614.56653, 0.513736904, -9.54774038e-09, -0.857947767, -1.59238234e-09, 1, -1.20820944e-08, 0.857947767, 7.57319896e-09, 0.513736904))
+end)
+
+npcTab:AddButton("the waifu's-", function()
+    teleportPlayer(CFrame.new(232.053223, 60.9308243, -379.009125, 0.999530613, -3.2730604e-08, 0.0306354202, 3.40958941e-08, 1, -4.40433183e-08, -0.0306354202, 4.50671855e-08, 0.999530613))
+end)
+
+npcTab:AddButton("king boo from mario cart", function()
+    teleportPlayer(CFrame.new(1556.34607, 140.930817, 130.769577, -0.0775194839, 6.77696832e-09, -0.99699086, 2.63064237e-10, 1, 6.77696832e-09, 0.99699086, 2.63064237e-10, -0.0775194839))
+end)
+
+npcTab:AddButton("Remgonuk", function()
+    teleportPlayer(CFrame.new(4293.25098, 59.9808235, 101.262352, -0.95811981, 2.59109445e-09, -0.286367565, 4.79066176e-10, 1, 7.44529682e-09, 0.286367565, 6.99629732e-09, -0.95811981))
+end)
+
+miscTab:AddSwitch("embrace the view", function()
+    teleportPlayer(CFrame.new(4293.25098, 59.9808235, 101.262352, -0.95811981, 2.59109445e-09, -0.286367565, 4.79066176e-10, 1, 7.44529682e-09, 0.286367565, 6.99629732e-09, -0.95811981))
 end)
