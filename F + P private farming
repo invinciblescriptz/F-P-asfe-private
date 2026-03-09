@@ -20,6 +20,6 @@ teleportTab:AddButton("10M strength", function()
     local player = game.Players.LocalPlayer
     if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
         -- Teleport the player to coordinates (x, y, z)
-        player.Character.HumanoidRootPart.CFrame = CFrame.new(-905.623169, 82.0793762, 172.1745)
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(-905.623169, 82.0793762, 172.1745, 0.987735569, -0.112320028, 0.108455651, 0.0944323093, -0.123430744, -0.987849891, 0.124342084, 0.985976279, -0.111310288)
     end
 end)
