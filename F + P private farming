@@ -167,5 +167,3 @@ end)
 npcTab:AddButton("ichigo", function()
     teleportPlayer(CFrame.new(297.918121, 220.930817, -1614.56653, 0.513736904, -9.54774038e-09, -0.857947767, -1.59238234e-09, 1, -1.20820944e-08, 0.857947767, 7.57319896e-09, 0.513736904))
 end)
-
-miscTab:AddLabel("made by invincible")
