@@ -2,7 +2,7 @@ local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/memej
 
 local window = library:AddWindow("F + P ♥️|| AFSE farming", {
     main_color = Color3.fromRGB(0, 0, 255),
-    min_size = Vector2.new(660, 780),
+    min_size = Vector2.new(770, 780),
     can_resize = false,
 })
 
